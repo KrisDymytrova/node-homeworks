@@ -1,9 +1,4 @@
-const fs = require('fs');
+const myMath = require('./modules_demo/myMath/myMath');
 
-fs.readFile('data.txt', 'utf8', (err, data) => {
-    if (err) {
-        console.error("Помилка читання файлу:", err);
-        return;
-    }
-    console.log("Вміст файлу data.txt:", data);
-});
+console.log('Множення:', myMath.multiplication(7, 5));
+console.log('Ділення:', myMath.division(20, 10));
