@@ -4,6 +4,7 @@ const cors = require('cors');
 const { PORT, MONGO_URI } = require('./config/config');
 const authRoutes = require('./routes/authRoutes');
 const postRoutes = require('./routes/postsRoutes');
+const commentRoutes = require('./routes/commentsRoutes');
 
 const app = express();
 
@@ -16,5 +17,6 @@ mongoose.connect(MONGO_URI)
 
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/comments', commentRoutes);
 
 app.listen(PORT, () => console.log(`🚀 Сервер працює на http://localhost:${PORT}`));

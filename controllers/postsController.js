@@ -13,6 +13,18 @@ const createPost = async (req, res) => {
     res.status(201).json(newPost);
 };
 
+const getPostById = async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if (!post) {
+            return res.status(404).json({ message: "Пост не знайдено" });
+        }
+        res.json(post);
+    } catch (error) {
+        res.status(500).json({ message: "Помилка сервера" });
+    }
+};
+
 const updatePost = async (req, res) => {
     const { title, content } = req.body;
     const post = await Post.findById(req.params.id);
@@ -37,4 +49,4 @@ const deletePost = async (req, res) => {
     res.status(200).json({ message: 'Пост видалено' });
 };
 
-module.exports = { getPosts, createPost, updatePost, deletePost };
+module.exports = { getPosts, createPost, getPostById, updatePost, deletePost };
